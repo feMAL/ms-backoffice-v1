@@ -1,8 +1,8 @@
 export const environments = {
-    dev: '.dev.env',
-    local: '.local.env',
-    qas: '.qa.env',
-    prod: '.env',
-    production: '.env',
+    dev: '.env.dev',
+    local: '.env',
+    qas: '.env.qa',
+    prod: '.env.prod',
+    production: '.env.prod',
     test: '.env.test',
   };

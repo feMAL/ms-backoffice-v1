@@ -26,12 +26,89 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Glosary
+
+- [📝 Requerimientos básicos](#basic-requirements)
+- [🛠️ Instalar dependencias](#install-dependencies)
+- [⚙️ Configuración](#configurations)
+- [💻 Run And Tests](#running)
+- [📚 Swagger](#swagger-info)
+
+<a name="basic-requirements"></a>
+
+## 📝 Requerimientos básicos
+
+- Node.js v18.13.0 or higher ([Download](https://nodejs.org/es/download/))
+- YARN v1.22.19 or higher
+- NPM v8.19.3 or higher
+- NestJS v9.1.9 or higher ([Documentación](https://nestjs.com/))
+
+<a name="install-dependencies"></a>
+
 ## Installation
+
+```bash
+$ yarn install
+```
 
 ```bash
 $ npm install
 ```
 
+<a name="configurations"></a>
+## ⚙️ Configuración
+
+This starter comes with **.env.example** and **.env.test**, this file keeps basic configurations to works the app.
+
+To run in local context you will need thi **.env.dev** file, you can generate this using the example file. 
+
+```sh
+# SERVER 
+APP_ENV=dev
+APP_NAME=semilla
+APP_HOST=localhost
+APP_PORT=3000
+APP_CONTEXT=v1
+APP_ORIGINS=http://localhost:3000,http://localhost:8080,http://localhost:8081
+APP_ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma
+APP_ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
+APP_CORS_ENABLED=true
+
+#SWAGGER
+APP_SWAGGER_ENABLED=true
+APP_SWAGGER_PATH=docs
+
+#
+JWT_SECRET=ClaveSecreta
+JWT_KEY_EXP=1d
+
+# DATABASE MONGO
+DB_MONGO_ENABLED=true
+DB_MONGO_HOSTNAME=localhost
+DB_MONGO_PORT=27017
+DB_MONGO_NAME=nest_authorization
+
+# DATABASE SQL
+DB_SQL_ENABLED=false
+DB_SQL_HOSTNAME=localhost
+DB_SQL_USER=root
+DB_SQL_PASSWD=B3r4z4t3gu1!
+DB_SQL_PORT=3306
+DB_SQL_NAME=test
+
+
+# EXTERNAL SERVICES
+#SRV_MAIL=http://localhost:3030/mail/send
+#SRV_MAIL_APIKEY=APIKEY-MAIL-SERVER-123456
+
+
+NODE_ENV=dev
+```
+
+<!--details>
+<summary>💬 Para ver en detalle todas las propiedades de la configuración, hace click acá.</summary-->
+
+<a name="running"></a>
 ## Running the app
 
 ```bash
@@ -58,6 +135,42 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+
+
+<a name="swagger-info"></a>
+
+## 📚 Swagger
+
+The starter has **Swagger** (OpenAPI 3.0.0).
+
+Para expandir la documentación, es importante aplicar los decoradores correspondientes a la
+aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
+
+This section can be available with this env variables.
+
+```sh
+APP_SWAGGER_PATH=docs
+APP_SWAGGER_ENABLED=true
+```
+
+#### URL
+
+Documentation access URL: `http://localhost:8080/v1/docs`
+
+#### Scheme
+
+```
+<http|https>://<server_url><:port>/<app-context>/<swagger-path>
+```
+
+#### Exportar el swagger en JSON
+
+Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path definido.
+
+- Default: `http://localhost:8080/v1/docs-json`
+- Schema: `<http|https>://<server_url><:port>/<app-context>/<swagger-path>-json`
+
+<a name="support"></a>
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
