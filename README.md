@@ -92,7 +92,7 @@ DB_MONGO_NAME=nest_authorization
 DB_SQL_ENABLED=false
 DB_SQL_HOSTNAME=localhost
 DB_SQL_USER=root
-DB_SQL_PASSWD=B3r4z4t3gu1!
+DB_SQL_PASSWD=root
 DB_SQL_PORT=3306
 DB_SQL_NAME=test
 
