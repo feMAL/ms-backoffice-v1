@@ -9,4 +9,9 @@ export class AppController {
   async getHello(): Promise<string> {
     return await this.appService.getHello();
   }
+  
+  @Get('error')
+  async getErrorHello(): Promise<string> {
+    return await this.appService.getHelloError();
+  }
 }

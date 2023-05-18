@@ -6,7 +6,7 @@ services:
     container_name: local-mongo
     restart: always
     ports:
-      - '27017:27017'
+      - '27033:27017'
     environment:
       TZ: UTC
       MONGO_INITDB_ROOT_USERNAME: root
@@ -19,11 +19,11 @@ services:
 
 
   mysql:
-    image: mysql:5.7
+    image: arm64v8/mysql
     container_name: local-mysql
     restart: always
     ports:
-      - '3306:3306'
+      - '3316:3306'
     environment:
       TZ: UTC
       MYSQL_ROOT_PASSWORD: 123456
@@ -52,4 +52,15 @@ services:
     #volumes:
     #  - ./.redis_data:/data
 
+  seed-v0.0.1:
+    container_name: seed_basic
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+      - 9229:9229
   
