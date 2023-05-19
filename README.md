@@ -34,6 +34,7 @@
 - [💻 Run And Tests](#running)
 - [📚 Swagger](#swagger-info)
 - [💾 Database](#db-info)
+- [🐳 Docker](#docker-info)
 
 <a name="basic-requirements"></a>
 
@@ -128,18 +129,15 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-
-
 <a name="swagger-info"></a>
 
 ## 📚 Swagger
 
 The starter has **Swagger** (OpenAPI 3.0.0).
 
-Para expandir la documentación, es importante aplicar los decoradores correspondientes a la
-aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
+For more documentation [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
 
-This section can be available with this env variables.
+This section can be available with the follow env variables in **.env** file.
 
 ```sh
 APP_SWAGGER_PATH=docs
@@ -192,6 +190,34 @@ DB_MONGO_HOSTNAME=localhost
 DB_MONGO_PORT=27017
 DB_MONGO_NAME=nest_authorization
 ```
+
+<a name="docker-info"></a>
+
+## 🐳 Docker
+
+This project have dockerfile and docker-compose.yml ready to use.
+
+### Docker Build
+Schema: docker build . -t <user-docker>/<app-name>
+
+### Docker Compose
+Schema: docker run -d -p 8080:8080 --env-file .env <user-docker>/<app-name>
+
+Example
+
+docker-compose -f docker/docker-compose.yml up -d --build
+
+or
+
+docker build -t nestjs-template .
+docker run -d -p 8080:8080 --env-file .env nestjs-template
+
+or 
+
+docker build -t nestjs-template .
+docker run -it -p 8080:8080 --env-file .env nestjs-template
+
+
 
 <a name="support"></a>
 ## Support
