@@ -33,6 +33,7 @@
 - [⚙️ Configuración](#configurations)
 - [💻 Run And Tests](#running)
 - [📚 Swagger](#swagger-info)
+- [💾 Database](#db-info)
 
 <a name="basic-requirements"></a>
 
@@ -83,18 +84,13 @@ JWT_SECRET=ClaveSecreta
 JWT_KEY_EXP=1d
 
 # DATABASE MONGO
-DB_MONGO_ENABLED=true
+DB_MONGO_ENABLED=false
 DB_MONGO_HOSTNAME=localhost
 DB_MONGO_PORT=27017
 DB_MONGO_NAME=nest_authorization
 
 # DATABASE SQL
 DB_SQL_ENABLED=false
-DB_SQL_HOSTNAME=localhost
-DB_SQL_USER=root
-DB_SQL_PASSWD=root
-DB_SQL_PORT=3306
-DB_SQL_NAME=test
 
 
 # EXTERNAL SERVICES
@@ -169,6 +165,36 @@ Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** 
 
 - Default: `http://localhost:8080/v1/docs-json`
 - Schema: `<http|https>://<server_url><:port>/<app-context>/<swagger-path>-json`
+
+
+<a name="db-info"></a>
+
+## 💾 Data Base
+
+This project can use Sql Data Base provided by TypeOrm or can use Non SQL, with mongoose.
+
+### Using SQL module.
+
+To use SQL database you have to available by environemnt variables. To do this, add the folowing variables in **.env** file
+
+```sh
+DB_SQL_ENABLED=true
+DB_SQL_HOSTNAME=localhost
+DB_SQL_USER=root
+DB_SQL_PASSWD=root
+DB_SQL_PORT=3306
+DB_SQL_NAME=test
+```
+
+### Using Mongoose Module
+To use Mongo database you have to available by environemnt variables. To do this, add the folowing variables in **.env** file
+
+```sh
+DB_MONGO_ENABLED=false
+DB_MONGO_HOSTNAME=localhost
+DB_MONGO_PORT=27017
+DB_MONGO_NAME=nest_authorization
+```
 
 <a name="support"></a>
 ## Support

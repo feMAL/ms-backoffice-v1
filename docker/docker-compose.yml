@@ -34,19 +34,19 @@ services:
     #  - ./.mysql-data/db:/var/lib/mysql
 
 
-  redis:
-    image: redis:6.2-alpine
-    container_name: local-redis
-    restart: always
-    ports:
-      - '6379:6379'
-    environment:
-      TZ: UTC
-      REDIS_PORT: 6379
-      REDIS_PASSWORD: 123456
-      REDIS_HOST: cache
-      #REDIS_USERNAME: default
-    command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
+  #redis:
+    #image: redis:6.2-alpine
+    #container_name: local-redis
+    #restart: always
+    #ports:
+    #  - '6379:6379'
+    #environment:
+    #  TZ: UTC
+    #  REDIS_PORT: 6379
+    #  REDIS_PASSWORD: 123456
+    #  REDIS_HOST: cache
+    #  #REDIS_USERNAME: default
+    #command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
     #logging:
     #  driver: none
     #volumes:
@@ -57,6 +57,16 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
+    environment:
+      - APP_CONTEXT=v1/seed
+      - APP_ORIGINS=http://localhost:3000,http://localhost:8080,http://localhost:8081
+      - APP_ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma
+      - APP_ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
+      - APP_CORS_ENABLED=true
+      - DB_MONGO_ENABLED=false
+      - DB_MONGO_HOSTNAME=localhost
+      - DB_MONGO_PORT=27017
+      - DB_MONGO_NAME=nest_authorization
     volumes:
       - ../:/usr/src/app
       - /usr/src/app/node_modules
