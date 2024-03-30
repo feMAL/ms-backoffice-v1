@@ -4,6 +4,7 @@ import { MongoDBProviderModule } from "./mongo/provider.module";
 
 import ConfigMongo from '../../config/database/mongo/configuration';
 import ConfigSql from '../../config/database/sql/configuration'
+import Config from '../../config/database/mongo/configuration';
 
 @Module({
     providers: [
@@ -14,7 +15,7 @@ import ConfigSql from '../../config/database/sql/configuration'
 export class DatabaseModule {
     
     static forRoot(): DynamicModule{
-
+        Config().connection
         const providers = [];
         if(ConfigMongo().isEnabled) providers.push(MongoDBProviderModule);
         if(ConfigSql().isEnabled) providers.push(MySqlProviderModule);

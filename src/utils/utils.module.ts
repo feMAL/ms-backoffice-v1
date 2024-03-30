@@ -3,6 +3,7 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
 import { CryptService } from './services/crypt.service';
 import { HelperService } from './services/helper.service';
 import Config from '../config/app/configuration';
+import { CacheService } from './services/cache.service';
 
 @Module({
     imports: [
@@ -14,11 +15,13 @@ import Config from '../config/app/configuration';
     providers: [
         CryptService,
         HelperService,
-        JwtService
+        JwtService,
+        CacheService
     ],
     exports: [
         CryptService,
         HelperService,
+        CacheService
     ]
 })
 export class UtilsModule {}

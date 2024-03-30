@@ -10,6 +10,10 @@ export class HelperService {
         @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
     ){}
 
+    checkIfPasswordIsValid(password:string){
+        const regexp = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8-15}/
+        return regexp.test(password);
+    }
 
     async setCacheValuesExamples(){
         Logger.log("setCacheValuesExamples", "HelperService");
