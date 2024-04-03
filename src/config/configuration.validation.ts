@@ -14,14 +14,18 @@ export const validationSchema = Joi.object({
     DB_SQL_PORT: Joi.number().optional(),
     DB_SQL_NAME: Joi.string().optional(),
     DB_MONGO_ENABLED: Joi.boolean().required(),
+    DB_MONGO_PROTOCOL: Joi.string().optional()
+        .valid('mongodb', 'mongodb+srv'),
     DB_MONGO_HOSTNAME: Joi.string().optional(),
+    DB_MONGO_USER: Joi.string().optional(),
+    DB_MONGO_PASS: Joi.string().optional(),
     DB_MONGO_PORT: Joi.number().optional(),
-    DB_MONGO_NAME: Joi.string().optional(),
+    DB_MONGO_DB_NAME: Joi.string().optional(),
     APP_CONTEXT: Joi.string().required(),
     APP_ORIGINS: Joi.string().required(),
     APP_ALLOWED_HEADERS: Joi.string().required(),
     APP_ALLOWED_METHODS: Joi.string().required(),
     APP_CORS_ENABLED: Joi.boolean().required(),
     APP_SWAGGER_ENABLED: Joi.boolean().required(),
-    APP_SWAGGER_PATH: Joi.string().required()
+    APP_SWAGGER_PATH: Joi.string().required(),
 })
