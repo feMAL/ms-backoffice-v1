@@ -5,14 +5,10 @@ import { AppService } from './app.service';
 import { ConfigurationModule } from './config/configuration.module';
 
 import { CacheProviderModule } from './providers/cache/provider.module';
-import { MongoDBProviderModule } from './providers/database/mongo/provider.module';
-import { MySqlProviderModule } from './providers/database/mysql/provider.module';
-
-import MongoDbConfig from './config/database/mongo/configuration';
-import SqlDbConfig from './config/database/sql/configuration';
 
 import { UtilsModule } from './utils/utils.module';
 import { DatabaseModule } from './providers/database/database.module';
+import { BackofficeModule } from './backoffice/backoffice.module';
 
 @Module({
   imports: [
@@ -20,6 +16,7 @@ import { DatabaseModule } from './providers/database/database.module';
     UtilsModule,
     CacheProviderModule,
     DatabaseModule.forRoot(),
+    BackofficeModule
   ],
   controllers: [AppController],
   providers: [AppService],
