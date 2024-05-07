@@ -8,6 +8,6 @@ import { MenuService } from "./services/menu.service";
     ],
     providers: [
         MenuService
-    ]
+    ],
 })
 export class MenuModule {}
