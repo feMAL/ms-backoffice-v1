@@ -6,6 +6,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { User, UserSchema } from "./models/user.model";
 import { ConfigService } from "@nestjs/config";
 import { HttpModule } from "@nestjs/axios";
+import { AuthorizatorService } from "./utils/authorizator.service";
 
 @Module({
     imports: [
@@ -21,7 +22,8 @@ import { HttpModule } from "@nestjs/axios";
     providers: [
         UserService,
         UserRepository,
-        ConfigService
+        ConfigService,
+        AuthorizatorService
     ]
 })
 export class UsersModule {}

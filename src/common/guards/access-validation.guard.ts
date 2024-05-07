@@ -21,19 +21,18 @@ import { map } from 'rxjs';
 
       const request: Request = context.switchToHttp().getRequest();
       const allowedAccess = await this.validation(request);
-  
       /* istanbul ignore next */
       if (allowedAccess?.status === 200) {
+        const body = await allowedAccess.json()
+        request.res.locals = body
         return true;
       }
     }
   
     async validation({ headers }: Request): Promise<any> {
       try {
-        const { acvUrl } =
-          this.configService.get('services');
+        const {acvUrl} = this.configService.get('ext_services');
         const authorization = headers['authorization'];
-
           
         /* istanbul ignore next */
         
@@ -42,8 +41,8 @@ import { map } from 'rxjs';
             authorization
           }
         })
-        return res;
 
+        return res;
         /* istanbul ignore next */
       } catch (error) {
         /* istanbul ignore next */
