@@ -16,6 +16,9 @@ export class Platform {
     @Prop({ type: String })
     type: string;
 
+    @Prop({ type: String, default: "" })
+    url: string;    
+
     @Prop([{ type: Types.ObjectId, ref: 'Section' }])
     sections: Section[];
 
